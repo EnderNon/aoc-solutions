@@ -8,7 +8,7 @@ fn main() {
     list2.sort();
 
     if list1.len() != list2.len() {
-        panic!("your lists are fucked")
+        panic!("your lists are broken. The length is not equal.")
     }
 
     let mut totaldiff: i64 = 0;
