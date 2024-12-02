@@ -3,12 +3,15 @@ use std::thread::current;
 
 fn main() {
     //  read file input
-    let lines: Vec<String> = read_to_string("input.txt").unwrap().lines().map(String::from).collect();
+    let lines: Vec<String> = read_to_string("input.txt")
+        .unwrap()
+        .lines()
+        .map(String::from)
+        .collect();
     // current safe total count
     let mut safecount = 0;
     // for each line
     for i in lines {
-
         println!("{i}");
         // for each line, split into a Vec<String> of the values
         let mut frfrstr: Vec<String> = i.split_whitespace().map(|s| s.parse().unwrap()).collect();
@@ -26,7 +29,6 @@ fn main() {
             if i != frfr.len() {
                 frfr.remove(i);
             }
-
 
             // sorted regular and reverse to check condition 1
             let mut sort1 = frfr.clone();
@@ -77,8 +79,6 @@ fn main() {
         if safemini {
             safecount += 1
         }
-
-
     }
     println!("{safecount}")
 }

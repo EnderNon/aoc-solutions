@@ -1,8 +1,8 @@
 fn main() {
-
-
-    let mut list1: Vec<i32> = serde_json::from_reader(std::fs::File::open("l1.json").unwrap()).unwrap();
-    let mut list2: Vec<i32> = serde_json::from_reader(std::fs::File::open("l2.json").unwrap()).unwrap();
+    let mut list1: Vec<i32> =
+        serde_json::from_reader(std::fs::File::open("l1.json").unwrap()).unwrap();
+    let mut list2: Vec<i32> =
+        serde_json::from_reader(std::fs::File::open("l2.json").unwrap()).unwrap();
 
     list1.sort();
     list2.sort();
@@ -17,8 +17,7 @@ fn main() {
         let int2 = list2[i];
         if int1 > int2 {
             totaldiff += (int1 - int2) as i64;
-        }
-        else if int1 < int2 {
+        } else if int1 < int2 {
             totaldiff += (int2 - int1) as i64;
         }
     }
