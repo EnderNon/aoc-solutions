@@ -8,6 +8,7 @@ fn main() {
     let mut safecount = 0;
     // for each line
     for i in lines {
+
         println!("{i}");
         // for each line, split into a Vec<String> of the values
         let mut frfrstr: Vec<String> = i.split_whitespace().map(|s| s.parse().unwrap()).collect();
