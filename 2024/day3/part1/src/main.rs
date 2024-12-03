@@ -11,25 +11,23 @@ fn main() {
     let pattern2 = Regex::new(r"mul\((\d+)\,(\d+)\)").unwrap();
 
     let mut finalvec1 = mul_parse(lines, pattern1);
-    let finalint = mul_process(finalvec1,pattern2);
-    println!("{:?}",finalint)
+    let finalint = mul_process(finalvec1, pattern2);
+    println!("{:?}", finalint)
 }
 
-
-fn mul_parse(thelines: Vec<String>, pattern: Regex) -> Vec<String>{
+fn mul_parse(thelines: Vec<String>, pattern: Regex) -> Vec<String> {
     let mut mulvec: Vec<String> = Vec::new();
     for i in thelines {
-        let tempvec: Vec<String> =
-            pattern.find_iter(&i)
-                .filter_map(|fr| fr.as_str().parse::<String>().ok()).collect();
+        let tempvec: Vec<String> = pattern
+            .find_iter(&i)
+            .filter_map(|fr| fr.as_str().parse::<String>().ok())
+            .collect();
 
         for i2 in tempvec {
             mulvec.push(i2);
         }
-
     }
     mulvec
-
 }
 
 fn mul_process(mulvec: Vec<String>, pattern: Regex) -> i64 {
@@ -42,7 +40,5 @@ fn mul_process(mulvec: Vec<String>, pattern: Regex) -> i64 {
         mulint += (capture1 * capture2) as i64;
     }
 
-
     mulint
-
 }
