@@ -33,25 +33,25 @@ fn main() {
     let leny = frfrvec.clone().len();
 
     for y in 1..leny {
-        let widthup = y >= 2;
-        let widthdown = (leny - y) >= 2;
+        let widthup = y >= 4;
+        let widthdown = (leny - y) >= 4;
 
         for x in 1..lenx+1 {
             // check if enough space left and right
 
-            let widthleft = x >= 2;
+            let widthleft = x >= 4;
 
-            let widthright = (lenx - x) >= 1;
+            let widthright = (lenx - x) >= 3;
 
             // search algorithm starts here
             // check if the char is X
-            if frfrvec[y][x] == 'A' {
+            if frfrvec[y][x] == 'X' {
                 println!("x is {x}");
                 println!("y is {y}");
                 println!("width up: {}", widthup);
                 println!("width down: {}", widthdown);
                 println!("width left: {}", widthleft);
-                // check if start from top
+                // check if going upwards
                 if widthup {
                     if frfrvec[y - 1][x] == 'M'
                         && frfrvec[y - 2][x] == 'A'
