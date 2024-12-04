@@ -29,14 +29,14 @@ fn main() {
         frfrvec.push(pushvec);
     }
     println!("{:?}", frfrvec);
-    let lenx = lines[1].chars().count() - 1;
-    let leny = frfrvec.clone().len() - 1;
+    let lenx = lines[1].chars().count();
+    let leny = frfrvec.clone().len();
 
-    for y in 1..leny + 1 {
-        let widthup = (y) >= 4;
+    for y in 1..leny {
+        let widthup = y >= 4;
         let widthdown = (leny - y) > 4;
 
-        for x in 1..lenx + 1 {
+        for x in 1..lenx {
             // check if enough space left and right
             println!("x is {x}");
             println!("y is {y}");
@@ -78,7 +78,6 @@ fn main() {
                     {
                         pointcounter += 1;
                         println!("successful left");
-
                     }
                 }
                 // check if going diag down left
@@ -89,7 +88,6 @@ fn main() {
                     {
                         pointcounter += 1;
                         println!("successful down left");
-
                     }
                 }
                 // check if going down
@@ -100,7 +98,6 @@ fn main() {
                     {
                         pointcounter += 1;
                         println!("successful down");
-
                     }
                 }
                 // check if going diag down right
@@ -111,7 +108,6 @@ fn main() {
                     {
                         pointcounter += 1;
                         println!("successful down right");
-
                     }
                 }
                 // check if going right
@@ -122,7 +118,6 @@ fn main() {
                     {
                         pointcounter += 1;
                         println!("successful right");
-
                     }
                 }
                 // check if going diag right up
@@ -133,7 +128,6 @@ fn main() {
                     {
                         pointcounter += 1;
                         println!("successful up right");
-
                     }
                 }
             }
