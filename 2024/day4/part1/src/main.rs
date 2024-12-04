@@ -41,10 +41,10 @@ fn main() {
 
             let widthleft = x >= 4;
 
-            let widthright = (lenx - x) >= 4;
+            let widthright = (lenx - x) >= 3;
 
             // search algorithm starts here
-            // check if the char is s
+            // check if the char is X
             if frfrvec[y][x] == 'X' {
                 println!("x is {x}");
                 println!("y is {y}");
