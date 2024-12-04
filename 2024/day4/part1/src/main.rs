@@ -34,22 +34,23 @@ fn main() {
 
     for y in 1..leny {
         let widthup = y >= 4;
-        let widthdown = (leny - y) > 3;
+        let widthdown = (leny - y) >= 4;
 
         for x in 1..lenx+1 {
             // check if enough space left and right
-            println!("x is {x}");
-            println!("y is {y}");
-            println!("width up: {}", widthup);
-            println!("width down: {}", widthdown);
+
             let widthleft = x >= 4;
-            println!("width left: {}", widthleft);
-            let widthright = (lenx - x) > 3;
-            println!("width right: {}", widthright);
+
+            let widthright = (lenx - x) >= 4;
 
             // search algorithm starts here
             // check if the char is s
             if frfrvec[y][x] == 'X' {
+                println!("x is {x}");
+                println!("y is {y}");
+                println!("width up: {}", widthup);
+                println!("width down: {}", widthdown);
+                println!("width left: {}", widthleft);
                 // check if going upwards
                 if widthup {
                     if frfrvec[y - 1][x] == 'M'
