@@ -33,60 +33,102 @@ fn main() {
     let leny = frfrvec.clone().len();
 
     for y in 1..leny {
-        let widthup = y >= 2;
-        let widthdown = (leny - y) >= 2;
+        let widthup = y >= 4;
+        let widthdown = (leny - y) >= 4;
 
         for x in 1..lenx+1 {
             // check if enough space left and right
 
-            let widthleft = x >= 2;
+            let widthleft = x >= 4;
 
-            let widthright = (lenx - x) >= 1;
+            let widthright = (lenx - x) >= 3;
 
             // search algorithm starts here
             // check if the char is X
-            if frfrvec[y][x] == 'A' {
+            if frfrvec[y][x] == 'X' {
                 println!("x is {x}");
                 println!("y is {y}");
                 println!("width up: {}", widthup);
                 println!("width down: {}", widthdown);
                 println!("width left: {}", widthleft);
-                if widthup && widthleft && widthdown && widthright {
-                    // check if start from top
-                    if frfrvec[y - 1][x - 1] == 'M' // up left
-                        && frfrvec[y - 1][x + 1] == 'M' // up right
-                        && frfrvec[y + 1][x - 1] == 'S' // down left
-                        && frfrvec[y + 1][x + 1] == 'S' // down right
+                // check if going upwards
+                if widthup {
+                    if frfrvec[y - 1][x] == 'M'
+                        && frfrvec[y - 2][x] == 'A'
+                        && frfrvec[y - 3][x] == 'S'
                     {
                         pointcounter += 1;
                         println!("successful up");
                     }
-                    // check if start from left
-                    if frfrvec[y - 1][x - 1] == 'M' // up left
-                        && frfrvec[y - 1][x + 1] == 'S' // up right
-                        && frfrvec[y + 1][x - 1] == 'M' // down left
-                        && frfrvec[y + 1][x + 1] == 'S' // down right
+                }
+                // check if going diag up left
+                if widthup && widthleft {
+                    if frfrvec[y - 1][x - 1] == 'M'
+                        && frfrvec[y - 2][x - 2] == 'A'
+                        && frfrvec[y - 3][x - 3] == 'S'
+                    {
+                        pointcounter += 1;
+                        println!("successful up left");
+                    }
+                }
+                // check if going left
+                if widthleft {
+                    if frfrvec[y][x - 1] == 'M'
+                        && frfrvec[y][x - 2] == 'A'
+                        && frfrvec[y][x - 3] == 'S'
                     {
                         pointcounter += 1;
                         println!("successful left");
                     }
-                    // check if start from bottom
-                    if frfrvec[y - 1][x - 1] == 'S' // up left
-                        && frfrvec[y - 1][x + 1] == 'S' // up right
-                        && frfrvec[y + 1][x - 1] == 'M' // down left
-                        && frfrvec[y + 1][x + 1] == 'M' // down right
+                }
+                // check if going diag down left
+                if widthdown && widthleft {
+                    if frfrvec[y + 1][x - 1] == 'M'
+                        && frfrvec[y + 2][x - 2] == 'A'
+                        && frfrvec[y + 3][x - 3] == 'S'
+                    {
+                        pointcounter += 1;
+                        println!("successful down left");
+                    }
+                }
+                // check if going down
+                if widthdown {
+                    if frfrvec[y + 1][x] == 'M'
+                        && frfrvec[y + 2][x] == 'A'
+                        && frfrvec[y + 3][x] == 'S'
                     {
                         pointcounter += 1;
                         println!("successful down");
                     }
-                    // check if start from right
-                    if frfrvec[y - 1][x - 1] == 'S' // up left
-                        && frfrvec[y - 1][x + 1] == 'M' // up right
-                        && frfrvec[y + 1][x - 1] == 'S' // down left
-                        && frfrvec[y + 1][x + 1] == 'M' // down right
+                }
+                // check if going diag down right
+                if widthdown && widthright {
+                    if frfrvec[y + 1][x + 1] == 'M'
+                        && frfrvec[y + 2][x + 2] == 'A'
+                        && frfrvec[y + 3][x + 3] == 'S'
+                    {
+                        pointcounter += 1;
+                        println!("successful down right");
+                    }
+                }
+                // check if going right
+                if widthright {
+                    if frfrvec[y][x + 1] == 'M'
+                        && frfrvec[y][x + 2] == 'A'
+                        && frfrvec[y][x + 3] == 'S'
                     {
                         pointcounter += 1;
                         println!("successful right");
+                    }
+                }
+                // check if going diag right up
+                if widthright && widthup {
+                    if frfrvec[y - 1][x + 1] == 'M'
+                        && frfrvec[y - 2][x + 2] == 'A'
+                        && frfrvec[y - 3][x + 3] == 'S'
+                    {
+                        pointcounter += 1;
+                        println!("successful up right");
                     }
                 }
             }
