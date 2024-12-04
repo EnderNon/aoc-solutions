@@ -29,14 +29,14 @@ fn main() {
         frfrvec.push(pushvec);
     }
     println!("{:?}", frfrvec);
-    let lenx = lines[1].chars().count();
-    let leny = frfrvec.clone().len();
+    let lenx = lines[1].chars().count() - 1;
+    let leny = frfrvec.clone().len() - 1;
 
-    for y in 1..leny {
+    for y in 1..leny + 1 {
         let widthup = y - 1 > 4;
         let widthdown = (leny - y) > 4;
 
-        for x in 1..lenx {
+        for x in 1..lenx + 1 {
             // check if enough space left and right
             println!("x is {x}");
             println!("y is {y}");
@@ -57,6 +57,7 @@ fn main() {
                         && frfrvec[y - 3][x] == 'S'
                     {
                         pointcounter += 1;
+                        println!("successful up");
                     }
                 }
                 // check if going diag up left
@@ -66,6 +67,7 @@ fn main() {
                         && frfrvec[y - 3][x - 3] == 'S'
                     {
                         pointcounter += 1;
+                        println!("successful up left");
                     }
                 }
                 // check if going left
@@ -75,6 +77,8 @@ fn main() {
                         && frfrvec[y][x - 3] == 'S'
                     {
                         pointcounter += 1;
+                        println!("successful left");
+
                     }
                 }
                 // check if going diag down left
@@ -84,6 +88,8 @@ fn main() {
                         && frfrvec[y + 3][x - 3] == 'S'
                     {
                         pointcounter += 1;
+                        println!("successful down left");
+
                     }
                 }
                 // check if going down
@@ -93,6 +99,8 @@ fn main() {
                         && frfrvec[y + 3][x] == 'S'
                     {
                         pointcounter += 1;
+                        println!("successful down");
+
                     }
                 }
                 // check if going diag down right
@@ -102,6 +110,8 @@ fn main() {
                         && frfrvec[y + 3][x + 3] == 'S'
                     {
                         pointcounter += 1;
+                        println!("successful down right");
+
                     }
                 }
                 // check if going right
@@ -111,6 +121,8 @@ fn main() {
                         && frfrvec[y][x + 3] == 'S'
                     {
                         pointcounter += 1;
+                        println!("successful right");
+
                     }
                 }
                 // check if going diag right up
@@ -120,9 +132,12 @@ fn main() {
                         && frfrvec[y - 3][x + 3] == 'S'
                     {
                         pointcounter += 1;
+                        println!("successful up right");
+
                     }
                 }
             }
+            println!("\n")
         }
     }
 
