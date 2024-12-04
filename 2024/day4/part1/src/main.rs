@@ -33,7 +33,7 @@ fn main() {
     let leny = frfrvec.clone().len() - 1;
 
     for y in 1..leny + 1 {
-        let widthup = y - 1 > 4;
+        let widthup = (y) >= 4;
         let widthdown = (leny - y) > 4;
 
         for x in 1..lenx + 1 {
@@ -42,7 +42,7 @@ fn main() {
             println!("y is {y}");
             println!("width up: {}", widthup);
             println!("width down: {}", widthdown);
-            let widthleft = x - 1 > 4;
+            let widthleft = x >= 4;
             println!("width left: {}", widthleft);
             let widthright = (lenx - x) > 4;
             println!("width right: {}", widthright);
