@@ -34,9 +34,9 @@ fn main() {
 
     for y in 1..leny {
         let widthup = y >= 4;
-        let widthdown = (leny - y) > 4;
+        let widthdown = (leny - y) > 3;
 
-        for x in 1..lenx {
+        for x in 1..lenx+1 {
             // check if enough space left and right
             println!("x is {x}");
             println!("y is {y}");
@@ -44,7 +44,7 @@ fn main() {
             println!("width down: {}", widthdown);
             let widthleft = x >= 4;
             println!("width left: {}", widthleft);
-            let widthright = (lenx - x) > 4;
+            let widthright = (lenx - x) > 3;
             println!("width right: {}", widthright);
 
             // search algorithm starts here
