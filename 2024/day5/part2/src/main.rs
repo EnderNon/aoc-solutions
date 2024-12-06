@@ -35,11 +35,11 @@ fn main() {
     println!("seq {:?}",seq);
 
 
-    let mut finalvec: Vec<Vec<i32>> = Vec::new();
+    let mut notsofinalvec: Vec<Vec<i32>> = Vec::new();
     'l1: for seq1 in seq {
         let seqvec: Vec<i32> = seq1.split(",").map(|a| a.parse().unwrap()).collect();
         let mut allow = true;
-        'l2: for rul2 in rul.clone() {
+        'swaptest: for rul2 in rul.clone() {
 
             let rulez: Vec<String> = rul2.split("|").map(|a| a.to_string()).collect();
             let r1: i32 = rulez[0].clone().parse().unwrap();
@@ -49,24 +49,34 @@ fn main() {
                 if let Some(pos1) = seqvec.iter().position(|a| a == &r1) {
                     if let Some(pos2) = seqvec.iter().position(|a| a == &r2) {
                         if pos1 > pos2 {
-                            println!("not allowed for {:?}, continued!!!!",seq1);
+                            println!("allowed for {:?}, continued!!!!",seq1);
                             allow = false;
+                            break 'swaptest;
                         }
                     }
                 }
             }
         }
-        if allow {
-            finalvec.push(seqvec)
+        if !allow {
+            notsofinalvec.push(seqvec)
         }
     }
-    for i in &finalvec {
+    for i in &notsofinalvec {
         println!("finalvec: {:?}",i)
     }
 
     let mut total = 0;
-    for i in &finalvec {
-        total += i[i.len()/2]
+
+    println!("not so final vec {:?}",notsofinalvec);
+
+
+    let truefinalvec = Vec::new();
+
+    fn test_pass {
+
     }
-    println!("{}",total)
+
+    for i in notsofinalvec {
+
+    }
 }
